@@ -17,7 +17,7 @@ import get from 'lodash/get';
 export async function asanaApiRequest(
 	this: IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions,
 	method: IHttpRequestMethods,
-	endpoint: string,
+	endpoint: `/${string}`,
 	body: object,
 	query?: IDataObject,
 	uri?: string | undefined,
@@ -29,9 +29,7 @@ export async function asanaApiRequest(
 		method,
 		body: method === 'GET' || method === 'HEAD' || method === 'DELETE' ? null : { data: body },
 		qs: query,
-		url:
-			uri ||
-			`https://app.asana.com/api/1.0/${endpoint.startsWith('/') ? endpoint.slice(1) : endpoint}`,
+		url: uri || `https://app.asana.com/api/1.0${endpoint}`,
 		json: true,
 	};
 
@@ -46,8 +44,7 @@ export async function asanaApiRequest(
 export async function asanaApiRequestAllItems(
 	this: IExecuteFunctions | ILoadOptionsFunctions,
 	method: IHttpRequestMethods,
-	endpoint: string,
-
+	endpoint: `/${string}`,
 	body: any = {},
 	query: IDataObject = {},
 ): Promise<any> {
