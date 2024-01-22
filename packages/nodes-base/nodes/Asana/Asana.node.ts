@@ -1,7 +1,6 @@
 import type {
 	IExecuteFunctions,
 	IDataObject,
-	IHttpRequestMethods,
 	ILoadOptionsFunctions,
 	INodeExecutionData,
 	INodePropertyOptions,
@@ -143,7 +142,7 @@ export class Asana implements INodeType {
 					{
 						name: 'Get Many',
 						value: 'getAll',
-						description: 'Get many substasks',
+						description: 'Get many subtasks',
 						action: 'Get many subtasks',
 					},
 				],
@@ -2110,7 +2109,7 @@ export class Asana implements INodeType {
 						responseData = responseData.data;
 					} else if (operation === 'search') {
 						// ----------------------------------
-						//         tasksearch
+						//         tasks/search
 						// ----------------------------------
 
 						const workspaceId = this.getNodeParameter('workspace', i) as string;
