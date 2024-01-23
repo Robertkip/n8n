@@ -33,7 +33,7 @@ function setUser(role: IRole) {
 }
 
 function setupOwnerAndCloudDeployment() {
-	setUser('owner');
+	setUser('global:owner');
 	settingsStore.setSettings(
 		merge({}, SETTINGS_STORE_DEFAULT_STATE.settings, {
 			n8nMetadata: {

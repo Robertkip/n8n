@@ -26,7 +26,7 @@ export class ExecutionsController {
 	private async getAccessibleWorkflowIds(user: User) {
 		return isSharingEnabled()
 			? await this.workflowSharingService.getSharedWorkflowIds(user)
-			: await this.workflowSharingService.getSharedWorkflowIds(user, ['owner']);
+			: await this.workflowSharingService.getSharedWorkflowIds(user, ['workflow:owner']);
 	}
 
 	@Get('/')

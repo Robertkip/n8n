@@ -27,7 +27,8 @@ const STATIC_SCOPE_MAP: Record<string, Scope[]> = {
 	admin: adminPermissions,
 };
 
-export type GlobalRole = 'owner' | 'admin' | 'member';
+export type GlobalRole = 'global:owner' | 'global:admin' | 'global:member';
+export type AssignableRole = Exclude<GlobalRole, 'global:owner'>;
 
 @Entity()
 export class User extends WithTimestamps implements IUser {
@@ -124,7 +125,7 @@ export class User extends WithTimestamps implements IUser {
 
 	@AfterLoad()
 	computeIsOwner(): void {
-		this.isOwner = this.role === 'owner';
+		this.isOwner = this.role === 'global:owner';
 	}
 
 	get globalScopes() {

@@ -85,7 +85,7 @@ export class UserRepository extends Repository<User> {
 			findManyOptions.where = otherFilters;
 
 			if (isOwner !== undefined) {
-				findManyOptions.where.role = isOwner ? 'owner' : Not('owner');
+				findManyOptions.where.role = isOwner ? 'global:owner' : Not('global:owner');
 			}
 		}
 
